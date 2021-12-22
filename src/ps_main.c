@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 11:25:07 by lucas-ma          #+#    #+#             */
-/*   Updated: 2021/12/21 16:18:16 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2021/12/22 10:45:17 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(int ac, char **av)
 	put_stack(&stack_a, ac, av);
 	stack_b = NULL;
 	print_lst(stack_a);
-	push(&stack_a, &stack_b, 1);
+	push(&stack_a, &stack_b, 2);
 	print_lst(stack_a);
+    print_lst(stack_b);
 	return (0);
 }
