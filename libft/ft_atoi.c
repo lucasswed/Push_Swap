@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 08:21:10 by lucas-ma          #+#    #+#             */
-/*   Updated: 2021/10/21 16:32:26 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/01/12 03:19:38 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	s;
+	int		i;
+	long	res;
+	long	s;
 
 	i = 0;
 	res = 0;
@@ -27,10 +27,15 @@ int	ft_atoi(const char *str)
 			s = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	if (str[i] >= '0' && str[i] <= '9')
 	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			res = (str[i] - '0') + (res * 10);
+			i++;
+		}
+		return (res * s);
 	}
-	return (res * s);
+	else
+		return (2147483648);
 }

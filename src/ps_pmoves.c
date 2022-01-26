@@ -6,11 +6,11 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 12:04:32 by lucas-ma          #+#    #+#             */
-/*   Updated: 2021/12/22 10:44:58 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/01/21 20:32:00 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "push_swap.h"
 
 void	push(t_list **src, t_list **dest, int option)
 {
@@ -19,7 +19,6 @@ void	push(t_list **src, t_list **dest, int option)
 	t_list	*temp;
 
 	cursor_src = *src;
-	
 	if (!*dest)
 	{
 		*dest = *src;

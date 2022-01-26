@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas-ma <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 11:11:06 by lucas-ma          #+#    #+#              #
-#    Updated: 2021/10/25 10:26:22 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/01/15 14:39:37 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
 OBJS	= $(SRCS:.c=.o)
 BONUS_S	= ft_lstsize.c ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
-			ft_lstnew.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c 
+			ft_lstnew.c
 BONUS_O	= $(BONUS_S:.c=.o)
 
 all:		$(NAME)
