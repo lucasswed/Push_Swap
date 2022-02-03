@@ -6,13 +6,13 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 11:11:06 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/03 12:25:13 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/03 12:25:29 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #------------------------------ LIBRARY NAME ----------------------------------#
 
-NAME	= libft.a
+NAME	= libps.a
 
 #----------------------------- COMMAND LINES ----------------------------------#
 
@@ -36,20 +36,11 @@ AR	= ar rcs
 
 #---------------------------------- FILES -------------------------------------#
 
-FILES	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-			ft_tolower.c ft_toupper.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
-			ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
-			ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_striteri.c \
-			ft_memchr.c ft_memcmp.c ft_strdup.c ft_calloc.c ft_itoa.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
-BONUS_FILES	= ft_lstsize.c ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
-			ft_lstnew.c
+FILES	=	algo2.c algo3.c algo5.c algo100.c ps_errors.c ps_pmoves.c ps_smoves.c ps_rmoves.c\
+			algo4.c
 
 SRCS	=		$(addprefix $(_SRC), $(FILES))
-BONUS_SRCS	=	$(addprefix $(_SRC), $(BONUS_FILES))
 OBJS	=		$(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
-BONUS_OBJS	=	$(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(BONUS_SRCS))
 
 #---------------------------------- RULES -------------------------------------#
 
@@ -61,9 +52,6 @@ $(_OBJ)%.o: $(_SRC)%.c
 $(NAME): $(_LIBS) $(_LIBS)$(NAME)
 $(_LIBS)$(NAME): $(_OBJ) $(OBJS)
 	$(AR) $(_LIBS)$(NAME) $(OBJS)
-
-bonus:	$(_LIBS) $(_LIBS)$(NAME) $(BONUS_OBJS)
-			$(AR) $(_LIBS)$(NAME) $(BONUS_OBJS)
 
 #---------------------------- DIRECTORIES CREATION ---------------------------#
 
@@ -88,6 +76,4 @@ fclean: clean
 
 re:	fclean all
 
-rebonus: fclean bonus
-
-.PHONY: all clean fclean re bonus rebonus
+.PHONY: all clean fclean re

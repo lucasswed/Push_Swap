@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:45:48 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/01/17 00:36:27 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:03:08 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ static int	ft_is_already_sorted(int ac, char **av)
 
 int	errors(int ac, char **av)
 {
-	if (ac < 2)
-		return (1);
 	if (ft_doubles(ac, av))
 	{
 		write(2, "Error\n", 6);

@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 02:11:00 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/01/21 20:30:46 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:22:46 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_issorted(t_list *stack_a)
 	return (1);
 }
 
-static int	ft_find_smaller(t_list *stack)
+int	ft_find_smaller(t_list *stack)
 {
 	t_list	*cursor;
 	t_list	*smaller;
@@ -50,7 +50,7 @@ static int	ft_find_smaller(t_list *stack)
 	return (counter);
 }
 
-static void	ft_do_push(t_list **stack_a, t_list **stack_b, int counter, int o)
+void	ft_do_push(t_list **stack_a, t_list **stack_b, int counter, int o)
 {
 	if (counter > 2)
 	{
@@ -68,7 +68,7 @@ static void	ft_do_push(t_list **stack_a, t_list **stack_b, int counter, int o)
 	{
 		while (counter)
 		{
-			rotate(stack_a, 2);
+			rotate(stack_a, 1);
 			counter--;
 		}
 	}
