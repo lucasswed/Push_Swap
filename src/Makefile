@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 11:11:06 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/03 12:25:29 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/04 11:44:49 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ AR	= ar rcs
 #---------------------------------- FILES -------------------------------------#
 
 FILES	=	algo2.c algo3.c algo5.c algo100.c ps_errors.c ps_pmoves.c ps_smoves.c ps_rmoves.c\
-			algo4.c
+			algo4.c algo100.c
 
 SRCS	=		$(addprefix $(_SRC), $(FILES))
 OBJS	=		$(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))

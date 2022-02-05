@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:33:28 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/03 14:20:04 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:17:23 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	put_stack(t_list **stack_a, int ac, char **av)
 }
 
 //retirar depois
-/*static void	print_lst(t_list *lst)
+static void	print_lst(t_list *lst)
 {
 	t_list	*cursor;
 
@@ -36,7 +36,7 @@ static void	put_stack(t_list **stack_a, int ac, char **av)
 		cursor = cursor->next;
 	}
 	printf("-------------\n");
-}*/
+}
 
 static void	call_case(int ac, t_list **stack_a, t_list **stack_b)
 {
@@ -48,8 +48,8 @@ static void	call_case(int ac, t_list **stack_a, t_list **stack_b)
 		algo4(stack_a, stack_b);
 	else if (ac == 6)
 		algo5(stack_a, stack_b);
-//	else if (ac < 500)
-//		algo100(stack_a, stack_b);
+	else if (ac < 100)
+		algo100(stack_a, stack_b, ac);
 }
 
 int	main(int ac, char **av)
@@ -61,8 +61,11 @@ int	main(int ac, char **av)
 		return (0);
 	stack_b = NULL;
 	put_stack(&stack_a, ac, av);
-	//print_lst(stack_a);
+	print_lst(stack_a);
 	call_case(ac, &stack_a, &stack_b);
-	//print_lst(stack_a);
+	printf("stack a\n");
+	print_lst(stack_a);
+	printf("stack b\n");
+	print_lst(stack_b);
 	return (0);
 }
