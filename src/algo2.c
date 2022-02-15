@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   algo2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 08:21:10 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/03 11:01:44 by lucas-ma         ###   ########.fr       */
+/*   Created: 2022/01/12 14:35:07 by lucas-ma          #+#    #+#             */
+/*   Updated: 2022/01/21 20:31:00 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *str)
-{
-	int		i;
-	long	res;
-	long	s;
+#include "push_swap.h"
 
-	i = 0;
-	res = 0;
-	s = 1;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			s = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	return (res * s);
+void	algo2(t_list **stack_a)
+{
+	swap(stack_a, 1);
 }
