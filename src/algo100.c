@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 11:33:00 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 02:05:11 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:31:06 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,78 +68,33 @@ int	num_of_chunks(int size)
 	return (num_chuncks);
 }
 
-// int	ft_find_quarter(t_list **stack_a)
-// {
-// 	t_list	*cursor;
-// 	int		soma;
-// 	float	media;
-// 	float	counter;
-// 	int		div;
-
-// 	soma = 0;
-// 	counter = 0;
-// 	div = num_of_chunks(ft_lstsize(*stack_a));
-// 	cursor = *stack_a;
-// 	while (cursor && counter < ft_lstsize(*stack_a) / div)
-// 	{
-// 		soma += cursor->content;
-// 		cursor = cursor->next;
-// 		counter++;
-// 	}
-// 	media = soma / (ft_lstsize(*stack_a) / div);
-// 	return (media);
-// }
-
 void	push_back_to_a(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*c_b;
 	t_list	*b;
 	t_list	*spot;
 
-	c_b = *stack_b;
-	if (c_b->content > ft_lstlast(*stack_a)->content
-		&& last_great(stack_a) == ft_lstlast(*stack_a))
-		push(stack_b, stack_a, 2);
-	else
+	b = look_the_best(stack_a, stack_b);
+	spot = find_spot(*stack_a, b);
+	while (*stack_b != b || *stack_a != spot)
 	{
-		b = look_the_best(stack_a, stack_b);
-		spot = find_spot(*stack_a, b);
-		while (*stack_b != b || *stack_a != spot)
+		joint_moves(stack_a, stack_b, spot, b);
+		while (b != *stack_b)
 		{
-			joint_moves(stack_a, stack_b, spot, b);
-			while (b != *stack_b)
-			{
-				if (ft_cost_r(*stack_b, b) > ft_cost_rr(b))
-					while (*stack_b != b)
-						reverse_rotate(stack_b, 2);
-				else
-					while (*stack_b != b)
-						rotate(stack_b, 2);
-			}
-			if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
-				while (*stack_a != spot)
-					reverse_rotate(stack_a, 1);
+			if (ft_cost_r(*stack_b, b) > ft_cost_rr(b))
+				while (*stack_b != b)
+					reverse_rotate(stack_b, 2);
 			else
-				while (*stack_a != spot)
-					rotate(stack_a, 1);
+				while (*stack_b != b)
+					rotate(stack_b, 2);
 		}
-		push(stack_b, stack_a, 2);
+		if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
+			while (*stack_a != spot)
+				reverse_rotate(stack_a, 1);
+		else
+			while (*stack_a != spot)
+				rotate(stack_a, 1);
 	}
-	// c_b = *stack_b;
-	// if (c_b->content > ft_lstlast(*stack_a)->content
-	// 	&& last_great(stack_a) == ft_lstlast(*stack_a))
-	// 	push(stack_b, stack_a, 2);
-	// else
-	// {
-	// 	spot = find_spot(*stack_a, *stack_b);
-	// 	if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
-	// 		while (*stack_a != spot)
-	// 			reverse_rotate(stack_a, 1);
-	// 	else
-	// 		while (*stack_a != spot)
-	// 			rotate(stack_a, 1);
-	// 	push(stack_b, stack_a, 2);
-	// }
+	push(stack_b, stack_a, 2);
 }
 
 void	algo100(t_list **stack_a, t_list **stack_b, int ac)
@@ -152,17 +107,15 @@ void	algo100(t_list **stack_a, t_list **stack_b, int ac)
 	len_ch = ft_lstsize(*stack_a) / num_of_chunks(ft_lstsize(*stack_a));
 	list = ft_create_array(stack_a, ac);
 	max = ft_lstsize(*stack_a);
-	chunk.i_min = 0;
-	chunk.i_max = len_ch;
-	chunk.min_ch = list[chunk.i_min];
-	chunk.max_ch = list[chunk.i_max];
+	increment_chunk(&chunk, list, len_ch, 1);
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		if (exist_chunk(stack_a, chunk) || chunk.i_max == max)
-			push_chunk(stack_a, stack_b, chunk);
+			push_chunk(stack_a, stack_b, chunk, num_of_chunks(max));
 		else
-			increment_chunk(&chunk, list, len_ch);
+			increment_chunk(&chunk, list, len_ch, 2);
 	}
+	free(list);
 	if (!(ft_issorted(*stack_a)))
 		choose_case(stack_a);
 	while (ft_lstsize(*stack_b) > 0)

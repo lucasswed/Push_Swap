@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:33:28 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/15 12:02:12 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:20:30 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ static void	put_stack(t_list **stack_a, int ac, char **av)
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(av[i])));
 		i++;
 	}
-}
-
-//retirar depois
-void	print_lst(t_list *lst)
-{
-	t_list	*cursor;
-
-	cursor = lst;
-	while (cursor)
-	{
-		printf("%d\n", cursor->content);
-		cursor = cursor->next;
-	}
-	printf("-------------\n");
 }
 
 static void	call_case(int ac, t_list **stack_a, t_list **stack_b)
@@ -63,5 +49,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	put_stack(&stack_a, ac, av);
 	call_case(ac, &stack_a, &stack_b);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }

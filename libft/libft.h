@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 11:11:25 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/15 10:54:19 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:20:09 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_putnbr_fd(int n, int fd);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst);
+void	ft_lstdelone(t_list *lst);
 
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);

@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 11:11:06 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/03 12:25:13 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/20 15:44:56 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ FILES	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
 BONUS_FILES	= ft_lstsize.c ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
-			ft_lstnew.c
+			ft_lstnew.c ft_lstclear.c ft_lstdelone.c
 
 SRCS	=		$(addprefix $(_SRC), $(FILES))
 BONUS_SRCS	=	$(addprefix $(_SRC), $(BONUS_FILES))
