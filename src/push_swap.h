@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:32:56 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/15 17:39:01 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 00:59:03 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
+typedef struct s_chunk
+{
+	int		min_ch;
+	int		max_ch;
+	int		i_max;
+	int		i_min;
+}			t_chunk;
+
+int		num_of_chunks(int size);
 int		ft_cost_rr(t_list *spot);
 int		errors(int ac, char **av);
 int		ft_issorted(t_list *stack_a);
 int		ft_find_smaller(t_list *stack);
-int		ft_find_median(t_list **stack_a);
+int		ft_find_quarter(t_list **stack_a);
 int		*ft_sort(t_list **stack_a, int ac);
 int		ft_cost_r(t_list *stack_a, t_list *spot);
+int		exist_chunk(t_list **stack_a, t_chunk ch);
+int		calculate_steps(t_list **st_a, t_list **st_b, t_list *s, t_list *c);
 
 void	algo2(t_list **stack_a);
 void	choose_case(t_list **stack_a);
@@ -32,15 +43,19 @@ void	final_sort(t_list **stack_a, int ac);
 void	rr(t_list **stack_a, t_list **stack_b);
 void	algo5(t_list **stack_a, t_list **stack_b);
 void	reverse_rotate(t_list **stack, int option);
-void	push_to_b(t_list **stack_a, t_list **stack_b);
+// void	push_to_b(t_list **stack_a, t_list **stack_b);
 void	push(t_list **src, t_list **dest, int option);
 void	algo100(t_list **stack_a, t_list **stack_b, int ac);
-void	reverse_rotate_all(t_list **stack_a, t_list stack_b);
+void	increment_chunk(t_chunk *chunk, int *list, int len);
+void	reverse_rotate_all(t_list **stack_a, t_list **stack_b);
+void	push_chunk(t_list **stack_a, t_list **stack_b, t_chunk ch);
 void	ft_do_push(t_list **stack_a, t_list **stack_b, int counter, int o);
+void	joint_moves(t_list **stack_a, t_list **stack_b, t_list *b, t_list *s);
 
-t_list	*last_great(t_list **stack_a);
 t_list	*ft_smaller(t_list *stack_a);
+t_list	*last_great(t_list **stack_a);
 t_list	*find_spot(t_list *stack_a, t_list *stack_b);
+t_list	*look_the_best(t_list **stack_a, t_list **stack_b);
 
 void	print_lst(t_list *lst);
 

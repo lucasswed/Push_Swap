@@ -6,121 +6,167 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 11:33:00 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/15 17:52:11 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 02:05:11 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	ft_small(t_list **stack_a, int *lst, int index)
-// {
-// 	int		smaller;
-// 	t_list	*cursor;
-
-// 	cursor = *stack_a;
-// 	smaller = cursor->content;
-// 	while (cursor)
-// 	{
-// 		if (cursor->content < smaller && cursor->content > lst[index - 1])
-// 			smaller = cursor->content;
-// 		cursor = cursor->next;
-// 	}
-// 	return (smaller);
-// }
-
-// int	*ft_sort(t_list **stack_a, int ac)
-// {
-// 	t_list	*cursor;
-// 	int		index;
-// 	int		*temp;
-
-// 	cursor = *stack_a;
-// 	index = 0;
-// 	temp = (int *)malloc(ac * sizeof(int));
-// 	if (!temp)
-// 		return (NULL);
-// 	while (index < ac)
-// 	{
-// 		while (cursor->content != ft_small(stack_a, temp, index))
-// 			cursor = cursor->next;
-// 		temp[index] = cursor->content;
-// 		cursor = *stack_a;
-// 		index++;
-// 	}
-// 	return (temp);
-// }
-
-// int	ft_find_median(t_list **stack_a, int size)
-// {
-// 	// int	index_median;
-// 	// int	median;
-// 	// int	*list;
-
-// 	// list = (int *)malloc(size * sizeof(int));
-// 	// if (!list)
-// 	// 	return (0);
-// 	// index_median = size / 2;
-// 	// list = ft_sort(stack_a, size);
-// 	// median = list[index_median];
-// 	// free(list);
-// 	// return (median);
-// }
-
-int	ft_find_median(t_list **stack_a)
+void	ft_sort_array(int **list, int size)
 {
-	t_list	*cursor;
-	int		soma;
-	int		media;
+	int	i;
+	int	a;
+	int	temp;
 
-	soma = 0;
+	a = 1;
+	while (a > 0)
+	{
+		a = 0;
+		i = 0;
+		while (i < (size - 1))
+		{
+			if ((*list)[i] > (*list)[i + 1])
+			{
+				temp = (*list)[i];
+				(*list)[i] = (*list)[i + 1];
+				(*list)[i + 1] = temp;
+				a++;
+			}
+			i++;
+		}
+	}
+}
+
+int	*ft_create_array(t_list **stack_a, int size)
+{
+	int		*list;
+	int		index;
+	t_list	*cursor;
+
+	list = malloc(size * sizeof(int));
 	cursor = *stack_a;
+	index = 0;
 	while (cursor)
 	{
-		soma += cursor->content;
+		list[index] = cursor->content;
+		index++;
 		cursor = cursor->next;
 	}
-	media = soma / ft_lstsize(*stack_a);
-	return (media);
+	ft_sort_array(&list, size);
+	return (list);
 }
+
+int	num_of_chunks(int size)
+{
+	int	num_chuncks;
+
+	num_chuncks = 1;
+	if (size == 100)
+		num_chuncks = 2;
+	else if (size == 500)
+		num_chuncks = 5;
+	return (num_chuncks);
+}
+
+// int	ft_find_quarter(t_list **stack_a)
+// {
+// 	t_list	*cursor;
+// 	int		soma;
+// 	float	media;
+// 	float	counter;
+// 	int		div;
+
+// 	soma = 0;
+// 	counter = 0;
+// 	div = num_of_chunks(ft_lstsize(*stack_a));
+// 	cursor = *stack_a;
+// 	while (cursor && counter < ft_lstsize(*stack_a) / div)
+// 	{
+// 		soma += cursor->content;
+// 		cursor = cursor->next;
+// 		counter++;
+// 	}
+// 	media = soma / (ft_lstsize(*stack_a) / div);
+// 	return (media);
+// }
 
 void	push_back_to_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*c_b;
+	t_list	*b;
 	t_list	*spot;
 
 	c_b = *stack_b;
 	if (c_b->content > ft_lstlast(*stack_a)->content
 		&& last_great(stack_a) == ft_lstlast(*stack_a))
-	{
 		push(stack_b, stack_a, 2);
-		rotate(stack_a, 1);
-	}
 	else
 	{
-		spot = find_spot(*stack_a, *stack_b);
-		if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
-			while (*stack_a != spot)
-				reverse_rotate(stack_a, 1);
-		else
-			while (*stack_a != spot)
-				rotate(stack_a, 1);
+		b = look_the_best(stack_a, stack_b);
+		spot = find_spot(*stack_a, b);
+		while (*stack_b != b || *stack_a != spot)
+		{
+			joint_moves(stack_a, stack_b, spot, b);
+			while (b != *stack_b)
+			{
+				if (ft_cost_r(*stack_b, b) > ft_cost_rr(b))
+					while (*stack_b != b)
+						reverse_rotate(stack_b, 2);
+				else
+					while (*stack_b != b)
+						rotate(stack_b, 2);
+			}
+			if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
+				while (*stack_a != spot)
+					reverse_rotate(stack_a, 1);
+			else
+				while (*stack_a != spot)
+					rotate(stack_a, 1);
+		}
 		push(stack_b, stack_a, 2);
 	}
+	// c_b = *stack_b;
+	// if (c_b->content > ft_lstlast(*stack_a)->content
+	// 	&& last_great(stack_a) == ft_lstlast(*stack_a))
+	// 	push(stack_b, stack_a, 2);
+	// else
+	// {
+	// 	spot = find_spot(*stack_a, *stack_b);
+	// 	if (ft_cost_r(*stack_a, spot) > ft_cost_rr(spot))
+	// 		while (*stack_a != spot)
+	// 			reverse_rotate(stack_a, 1);
+	// 	else
+	// 		while (*stack_a != spot)
+	// 			rotate(stack_a, 1);
+	// 	push(stack_b, stack_a, 2);
+	// }
 }
 
 void	algo100(t_list **stack_a, t_list **stack_b, int ac)
 {
-	push_to_b(stack_a, stack_b);
+	int		*list;
+	int		len_ch;
+	int		max;
+	t_chunk	chunk;
+
+	len_ch = ft_lstsize(*stack_a) / num_of_chunks(ft_lstsize(*stack_a));
+	list = ft_create_array(stack_a, ac);
+	max = ft_lstsize(*stack_a);
+	chunk.i_min = 0;
+	chunk.i_max = len_ch;
+	chunk.min_ch = list[chunk.i_min];
+	chunk.max_ch = list[chunk.i_max];
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		if (exist_chunk(stack_a, chunk) || chunk.i_max == max)
+			push_chunk(stack_a, stack_b, chunk);
+		else
+			increment_chunk(&chunk, list, len_ch);
+	}
 	if (!(ft_issorted(*stack_a)))
 		choose_case(stack_a);
 	while (ft_lstsize(*stack_b) > 0)
-	{
-		if (look_the_better(stack_a, stack_b) == 1)
-			reverse_rotate(stack_b, 2);
-		if (look_the_better(stack_a, stack_a) == 2)
-			swap(stack_b, 2);
 		push_back_to_a(stack_a, stack_b);
-	}
 	if (!(ft_issorted(*stack_a)))
 		final_sort(stack_a, ac);
 }

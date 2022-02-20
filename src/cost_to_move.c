@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:44:29 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/15 15:16:19 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/20 01:37:16 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ t_list	*find_spot(t_list *stack_a, t_list *stack_b)
 
 	c_a = stack_a;
 	c_b = stack_b->content;
+	if (c_b > ft_lstlast(stack_a)->content
+		&& last_great(&stack_a) == ft_lstlast(stack_a))
+		return (c_a);
 	if (c_b < ft_smaller(stack_a)->content)
 	{
 		c_a = ft_smaller(stack_a);
