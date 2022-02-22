@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 11:28:09 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 16:07:25 by lucas-ma         ###   ########.fr       */
+/*   Created: 2021/10/28 10:29:07 by lucas-ma          #+#    #+#             */
+/*   Updated: 2022/02/21 14:37:04 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-char	*ft_strdup(const char *src)
-{
-	char	*str;
-	int		len;
-	int		index;
+# include <unistd.h>
+# include <stdlib.h>
 
-	if (src)
-	{
-		index = 0;
-		len = ft_strlen(src);
-		if (!len)
-			return (NULL);
-		str = malloc((len + 1) * sizeof(char));
-		if (!str)
-			return (NULL);
-		while (src[index])
-		{
-			str[index] = src[index];
-			index++;
-		}
-		str[index] = '\0';
-		return (str);
-	}
-	return (NULL);
-}
+char	*get_next_line(int fd);
+
+char	*ft_strdup(const char *s1);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+size_t	ft_strlen(const char *s);
+
+#endif

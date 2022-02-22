@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 00:41:11 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 01:40:42 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:12:19 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	joint_moves(t_list **stack_a, t_list **stack_b, t_list *b, t_list *s)
 		if (ft_cost_r(*stack_b, b) > ft_cost_rr(b))
 		{
 			if (ft_cost_r(*stack_a, s) > ft_cost_rr(s))
-				reverse_rotate_all(stack_a, stack_b);
+				reverse_rotate_all(stack_a, stack_b, 0);
 		}
 		else
 		{
 			if (ft_cost_r(*stack_a, s) < ft_cost_rr(s))
-				rr(stack_a, stack_b);
+				rr(stack_a, stack_b, 0);
 		}
 	}
 }

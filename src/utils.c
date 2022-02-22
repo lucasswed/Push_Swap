@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:31:59 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 17:29:52 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:58:55 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,6 @@ t_list	*ft_smaller(t_list *stack_a)
 	}
 	return (smaller);
 }
-
-// void	push_to_b(t_list **stack_a, t_list **stack_b)
-// {
-// 	float		median;
-// 	int			counter;
-// 	int			size;
-
-// 	median = ft_find_quarter(stack_a);
-// 	size = ft_lstsize(*stack_a);
-// 	counter = 0;
-// 	if ((*stack_a)->content < median)
-// 		push(stack_a, stack_b, 1);
-// 	else
-// 		rotate(stack_a, 1);
-// }
 
 int	exist_chunk(t_list **stack_a, t_chunk ch)
 {

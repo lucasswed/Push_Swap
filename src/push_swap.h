@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:32:56 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 17:30:24 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:37:15 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ void	choose_case(t_list **stack_a);
 void	swap(t_list **stack, int option);
 void	rotate(t_list **stack, int option);
 void	final_sort(t_list **stack_a, int ac);
-void	rr(t_list **stack_a, t_list **stack_b);
 void	algo5(t_list **stack_a, t_list **stack_b);
 void	reverse_rotate(t_list **stack, int option);
 void	push(t_list **src, t_list **dest, int option);
+void	ss(t_list **stack_a, t_list **stack_b, int option);
+void	rr(t_list **stack_a, t_list **stack_b, int option);
 void	algo100(t_list **stack_a, t_list **stack_b, int ac);
-void	reverse_rotate_all(t_list **stack_a, t_list **stack_b);
 void	increment_chunk(t_chunk *chunk, int *list, int len, int option);
+void	reverse_rotate_all(t_list **stack_a, t_list **stack_b, int option);
 void	push_chunk(t_list **stack_a, t_list **stack_b, t_chunk ch, int nb);
 void	ft_do_push(t_list **stack_a, t_list **stack_b, int counter, int o);
 void	joint_moves(t_list **stack_a, t_list **stack_b, t_list *b, t_list *s);
@@ -55,5 +56,14 @@ t_list	*ft_smaller(t_list *stack_a);
 t_list	*last_great(t_list **stack_a);
 t_list	*find_spot(t_list *stack_a, t_list *stack_b);
 t_list	*look_the_best(t_list **stack_a, t_list **stack_b);
+
+/*
+ *BONUS
+ */
+
+void	move_p(char *moves, t_list **stack_a, t_list **stack_b);
+void	move_r(char *moves, t_list **stack_a, t_list **stack_b);
+void	move_s(char *moves, t_list **stack_a, t_list **stack_b);
+void	move_rr(char *moves, t_list **stack_a, t_list **stack_b);
 
 #endif

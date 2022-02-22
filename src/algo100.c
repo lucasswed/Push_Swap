@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 11:33:00 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 17:31:06 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:52:35 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	algo100(t_list **stack_a, t_list **stack_b, int ac)
 	increment_chunk(&chunk, list, len_ch, 1);
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		if (exist_chunk(stack_a, chunk) || chunk.i_max == max)
+		if (exist_chunk(stack_a, chunk))
 			push_chunk(stack_a, stack_b, chunk, num_of_chunks(max));
 		else
 			increment_chunk(&chunk, list, len_ch, 2);

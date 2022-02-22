@@ -6,13 +6,14 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/09 15:07:53 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/22 16:12:14 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ################ PROGRAM ################
 
 NAME    =        push_swap
+NAME_BONUS =	 checker
 
 ################ TERMINAL ###############
 
@@ -43,7 +44,9 @@ CF        =        -Wall -Werror -Wextra
 ################ FILES ##################
 
 SRCS    =        $(_SRC)ps_main.c
+SRCS_BONUS	=	 $(_SRC)checker.c $(_SRC)checker_moves.c $(_SRC)get_next_line.c $(_SRC)get_next_line_utils.c
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
+OBJS_BONUS	=	 $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS_BONUS))
 DEPS    =        libft.a libps.a
 LIBS    =        -lft -lps
 
@@ -56,6 +59,9 @@ $(_OBJ)%.o: $(_SRC)%.c
 
 $(_BIN)$(NAME): deps $(OBJS)
 	$(CC) $(CF) $(LIBS) $(OBJS) -o $@ -L $(_LIB)
+
+bonus: deps $(OBJS_BONUS) all
+	$(CC) $(CF) $(LIBS) $(OBJS_BONUS) -o $(NAME_BONUS) -L $(_LIB)
 
 ################ DEPS ###################
 
@@ -88,7 +94,11 @@ clean:
 
 fclean: clean
 	$(RMV) -r $(NAME)
+	$(RMV) -r $(NAME_BONUS)
+	$(RMV) -r $(_LIB)
 
 re: fclean all
+
+rebonus: fclean bonus
 
 .PHONY: all deps clean fclean re 

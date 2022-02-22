@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:20:44 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/20 01:02:24 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:12:00 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ void	rotate(t_list **stack, int option)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b, int option)
 {
 	rotate(stack_a, 0);
 	rotate(stack_b, 0);
-	write(1, "rr\n", 3);
+	if (option == 0)
+		write(1, "rr\n", 3);
 }
 
 void	reverse_rotate(t_list **stack, int option)
@@ -55,9 +56,10 @@ void	reverse_rotate(t_list **stack, int option)
 		write(1, "rrb\n", 4);
 }
 
-void	reverse_rotate_all(t_list **stack_a, t_list **stack_b)
+void	reverse_rotate_all(t_list **stack_a, t_list **stack_b, int option)
 {
 	reverse_rotate(stack_a, 0);
 	reverse_rotate(stack_b, 0);
-	write(1, "rrr\n", 4);
+	if (option == 0)
+		write(1, "rrr\n", 4);
 }
