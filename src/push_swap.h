@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:32:56 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 21:06:24 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 23:00:45 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_chunk
 
 int		num_of_chunks(int size);
 int		ft_cost_rr(t_list *spot);
-int		errors(int ac, char **av);
 int		ft_issorted(t_list *stack_a);
 int		ft_find_smaller(t_list *stack);
 int		ft_find_quarter(t_list **stack_a);
+int		errors(int ac, char **av, int op);
 int		*ft_sort(t_list **stack_a, int ac);
 int		ft_cost_r(t_list *stack_a, t_list *spot);
 int		exist_chunk(t_list **stack_a, t_chunk ch);

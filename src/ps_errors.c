@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:45:48 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/21 15:27:51 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:58:39 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,44 @@ static int	ft_is_already_sorted(int ac, char **av)
 	return (1);
 }
 
-int	errors(int ac, char **av)
+static int	ft_all_numeric(int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (ft_isalpha(av[i][j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	errors(int ac, char **av, int op)
 {
 	if (ft_doubles(ac, av))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (ft_all_integers(ac, av))
+	if (ft_all_integers(ac, av) || ft_all_numeric(ac, av))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (ft_is_already_sorted(ac, av))
+	if (ft_is_already_sorted(ac, av) && op == 1)
+	{
+		write(1, "OK\n", 3);
+		return (1);
+	}
+	if (ft_is_already_sorted(ac, av) && op == 2)
 		return (1);
 	return (0);
 }

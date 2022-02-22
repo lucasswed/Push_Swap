@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:33:28 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 15:37:21 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:58:55 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	if (errors(ac, av) || ac < 3)
+	if (errors(ac, av, 2) || ac < 3)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
