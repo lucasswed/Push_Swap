@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:32:56 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 15:37:15 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:06:24 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ t_list	*look_the_best(t_list **stack_a, t_list **stack_b);
  *BONUS
  */
 
+typedef struct s_things
+{
+	int		c;
+	char	*moves;
+}	t_things;
+
+void	ft_clear_all(t_list **stack_a, t_list **stack_b);
+void	ft_initialize_lst(t_list **stack_a, t_list **stack_b);
 void	move_p(char *moves, t_list **stack_a, t_list **stack_b);
 void	move_r(char *moves, t_list **stack_a, t_list **stack_b);
 void	move_s(char *moves, t_list **stack_a, t_list **stack_b);

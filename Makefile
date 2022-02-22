@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/22 16:12:14 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/22 21:07:02 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ CF        =        -Wall -Werror -Wextra
 ################ FILES ##################
 
 SRCS    =        $(_SRC)ps_main.c
-SRCS_BONUS	=	 $(_SRC)checker.c $(_SRC)checker_moves.c $(_SRC)get_next_line.c $(_SRC)get_next_line_utils.c
+SRCS_BONUS	=	 $(_SRC)checker.c $(_SRC)checker_moves.c $(_SRC)get_next_line.c $(_SRC)get_next_line_utils.c \
+				 $(_SRC)checker_utils.c
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 OBJS_BONUS	=	 $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS_BONUS))
 DEPS    =        libft.a libps.a
