@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:45:48 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 22:58:39 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/23 09:47:37 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ static int	ft_all_numeric(int ac, char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if (ft_isalpha(av[i][j]))
+			if (ft_isdigit(av[i][j]))
+				j++;
+			else
 				return (1);
-			j++;
 		}
 		i++;
 	}
@@ -93,7 +94,7 @@ int	errors(int ac, char **av, int op)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (ft_is_already_sorted(ac, av) && op == 1)
+	if (ft_is_already_sorted(ac, av) && op == 1 && ac > 2)
 	{
 		write(1, "OK\n", 3);
 		return (1);

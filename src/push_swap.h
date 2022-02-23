@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:32:56 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 23:00:45 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/23 09:34:07 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_things
 	char	*moves;
 }	t_things;
 
+void	free_moves(t_things *things);
 void	ft_clear_all(t_list **stack_a, t_list **stack_b);
 void	ft_initialize_lst(t_list **stack_a, t_list **stack_b);
 void	move_p(char *moves, t_list **stack_a, t_list **stack_b);

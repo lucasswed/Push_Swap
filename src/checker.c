@@ -6,7 +6,7 @@
 /*   By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:00:38 by lucas-ma          #+#    #+#             */
-/*   Updated: 2022/02/22 22:59:08 by lucas-ma         ###   ########.fr       */
+/*   Updated: 2022/02/23 09:48:11 by lucas-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ static void	ft_do_moves(char *moves, t_list **stack_a, t_list **stack_b)
 		move_rr(moves, stack_a, stack_b);
 }
 
-static void	check_sort(t_list *stack_a, t_list *stack_b, char *moves)
+static void	check_sort(t_list *stack_a, t_list *stack_b, t_things *things)
 {
-	if (ft_check_moves(moves, 0) != 0)
+	if (ft_check_moves((*things).moves, 0) != 0)
 	{
 		if (ft_issorted(stack_a) && ft_lstsize(stack_b) == 0)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
 	}
+	free((*things).moves);
 }
 
 static void	put_stack(t_list **stack_a, int ac, char **av)
@@ -92,6 +93,7 @@ int	main(int ac, char **av)
 	put_stack(&stack_a, ac, av);
 	while (things.c != 0)
 	{
+		free(things.moves);
 		things.moves = get_next_line(0);
 		if (ft_check_moves(things.moves, 1) == 0)
 			break ;
@@ -99,8 +101,7 @@ int	main(int ac, char **av)
 		if (ft_check_moves(things.moves, 0) == 5 || things.moves == NULL)
 			things.c = 0;
 	}
-	check_sort(stack_a, stack_b, things.moves);
-	free(things.moves);
+	check_sort(stack_a, stack_b, &things);
 	ft_clear_all(&stack_a, &stack_a);
 	return (0);
 }
