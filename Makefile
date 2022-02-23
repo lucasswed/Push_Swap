@@ -6,7 +6,7 @@
 #    By: lucas-ma <lucas-ma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 15:07:52 by lucas-ma          #+#    #+#              #
-#    Updated: 2022/02/22 21:07:02 by lucas-ma         ###   ########.fr        #
+#    Updated: 2022/02/23 10:42:55 by lucas-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,30 +48,28 @@ SRCS_BONUS	=	 $(_SRC)checker.c $(_SRC)checker_moves.c $(_SRC)get_next_line.c $(_
 				 $(_SRC)checker_utils.c
 OBJS    =        $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS))
 OBJS_BONUS	=	 $(patsubst $(_SRC)%.c,$(_OBJ)%.o,$(SRCS_BONUS))
-DEPS    =        libft.a libps.a
+DEPS    =        $(_LIB)libft.a $(_LIB)libps.a
 LIBS    =        -lft -lps
 
 ################ RULES ##################
 
-all: deps $(NAME)
+all: $(NAME)
 
 $(_OBJ)%.o: $(_SRC)%.c
 	$(CC) $(CF) -c $< -o $@
 
-$(_BIN)$(NAME): deps $(OBJS)
+$(NAME): $(DEPS) $(OBJS)
 	$(CC) $(CF) $(LIBS) $(OBJS) -o $@ -L $(_LIB)
 
-bonus: deps $(OBJS_BONUS) all
+bonus: $(DEPS) $(OBJS_BONUS) all
 	$(CC) $(CF) $(LIBS) $(OBJS_BONUS) -o $(NAME_BONUS) -L $(_LIB)
 
 ################ DEPS ###################
 
-deps: $(DEPS)
-
-libft.a:
+$(_LIB)libft.a: $(shell make -C libft/ -q libft.a || echo force)
 	$(MKE) bonus -C libft/
 
-libps.a:
+$(_LIB)libps.a: $(shell make -C src/ -q libps.a || echo force)
 	$(MKE) libps.a -C src/
 
 ############## STRUCTURE ################
@@ -102,4 +100,4 @@ re: fclean all
 
 rebonus: fclean bonus
 
-.PHONY: all deps clean fclean re 
+.PHONY: all clean fclean re force
